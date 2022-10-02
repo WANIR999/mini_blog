@@ -13,6 +13,17 @@ const getCategorie=(req,res)=>{
       }
       ).catch(error=>res.json(error))
 };
+const searchCategorie=(req,res)=>{
+    const {body} =req
+    Categorie.findAll({
+        where: {
+          label: body.content
+        }
+      }).then(Categorie=>{
+     res.json(Categorie);
+   }
+   ).catch(error=>res.json(error))
+};
 const createCategorie=(req,res)=>{
     const {body}=req;
     Categorie.create({...body}).then(()=>{
@@ -38,4 +49,4 @@ const deleteCategorie=(req,res)=>{
 };
 
 
-export {getAllCategories,getCategorie,createCategorie,updateCategorie,deleteCategorie};
+export {getAllCategories,getCategorie,createCategorie,updateCategorie,deleteCategorie,searchCategorie};
