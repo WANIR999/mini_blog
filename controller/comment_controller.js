@@ -13,6 +13,17 @@ const getComment=(req,res)=>{
       }
       ).catch(error=>res.json(error))
 };
+const searchComment=(req,res)=>{
+    const {body} =req
+    Comment.findAll({
+        where: {
+          content: body.content
+        }
+      }).then(Comment=>{
+     res.json(Comment);
+   }
+   ).catch(error=>res.json(error))
+};
 const createComment=(req,res)=>{
     const {body}=req;
     Comment.create({...body}).then(()=>{
@@ -40,4 +51,4 @@ const deleteComment=(req,res)=>{
 };
 
 
-export {getAllComment,getComment,createComment,updateComment,deleteComment};
+export {getAllComment,getComment,createComment,updateComment,deleteComment,searchComment};

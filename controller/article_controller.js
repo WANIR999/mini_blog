@@ -6,6 +6,17 @@ const getAllarticles=(req,res)=>{
    }
    ).catch(error=>res.json(error))
 };
+const searcharticle=(req,res)=>{
+    const {body} =req
+    Article.findAll({
+        where: {
+          content: body.content
+        }
+      }).then(Articles=>{
+     res.json(Articles);
+   }
+   ).catch(error=>res.json(error))
+};
 const getarticle=(req,res)=>{
     const {id}= req.params;
     Article.findByPk(id).then(Articles=>{
@@ -40,4 +51,4 @@ const deleteArticle=(req,res)=>{
 };
 
 
-export {getAllarticles,getarticle,createArticle,updateArticle,deleteArticle};
+export {getAllarticles,getarticle,createArticle,updateArticle,deleteArticle,searcharticle};

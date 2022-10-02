@@ -13,6 +13,17 @@ const getevaluation=(req,res)=>{
       }
       ).catch(error=>res.json(error))
 };
+const searchevaluation=(req,res)=>{
+    const {body} =req
+    evaluation.findAll({
+        where: {
+          content: body.content
+        }
+      }).then(evaluation=>{
+     res.json(evaluation);
+   }
+   ).catch(error=>res.json(error))
+};
 const createevaluation=(req,res)=>{
     const {body}=req;
     evaluation.create({...body}).then(()=>{
@@ -40,4 +51,4 @@ const deleteevaluation=(req,res)=>{
 };
 
 
-export {getAllevaluation,getevaluation,createevaluation,updateevaluation,deleteevaluation};
+export {getAllevaluation,getevaluation,createevaluation,updateevaluation,deleteevaluation,searchevaluation};
