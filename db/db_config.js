@@ -1,3 +1,3 @@
-import {Sequelize} from 'Sequelize'
+const {Sequelize} = require('Sequelize')
 
-export default new Sequelize('mini_blog','root','',{dialect:'mysql',host:'localhost'})
+module.exports= new Sequelize('mini_blog','root','',{dialect:'mysql',host:'localhost'})

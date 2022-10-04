@@ -1,4 +1,4 @@
-import Categorie from '../models/categorie_model.js'
+const Categorie = require ('../models/categorie_model')
 
 const getAllCategories=(req,res)=>{
     Categorie.findAll().then(Categories=>{
@@ -49,4 +49,4 @@ const deleteCategorie=(req,res)=>{
 };
 
 
-export {getAllCategories,getCategorie,createCategorie,updateCategorie,deleteCategorie,searchCategorie};
+module.exports = {getAllCategories,getCategorie,createCategorie,updateCategorie,deleteCategorie,searchCategorie};

@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import db_config from '../db/db_config.js'
+const { DataTypes } = require("sequelize");
+const db_config = require('../db/db_config')
 
 const Article= db_config.define('Article',{
     creator:{
@@ -17,4 +17,4 @@ const Article= db_config.define('Article',{
 })
 
 
-export default Article
+module.exports =Article
