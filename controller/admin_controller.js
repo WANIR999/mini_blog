@@ -1,4 +1,4 @@
-import Admin from '../models/admin_model.js'
+const Admin = require('../models/admin_model')
 
 const getAll=(req,res)=>{
    Admin.findAll().then(admins=>{
@@ -39,4 +39,4 @@ const deleteOne=(req,res)=>{
 };
 
 
-export {getAll,getOne,createOne,updateOne,deleteOne};
+module.exports= {getAll,getOne,createOne,updateOne,deleteOne};

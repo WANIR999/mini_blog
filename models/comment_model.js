@@ -1,5 +1,5 @@
-import { DataTypes } from "sequelize";
-import db_config from '../db/db_config.js'
+const { DataTypes } = require("sequelize");
+const db_config = require('../db/db_config')
 
 const Comment= db_config.define('Comment',{
     creator:{
@@ -17,4 +17,4 @@ const Comment= db_config.define('Comment',{
 })
 
 
-export default Comment
+module.exports= Comment

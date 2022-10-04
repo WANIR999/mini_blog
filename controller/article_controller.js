@@ -1,4 +1,4 @@
-import Article from '../models/article_model.js'
+const Article = require('../models/article_model')
 
 const getAllarticles=(req,res)=>{
     Article.findAll().then(Articles=>{
@@ -51,4 +51,4 @@ const deleteArticle=(req,res)=>{
 };
 
 
-export {getAllarticles,getarticle,createArticle,updateArticle,deleteArticle,searcharticle};
+module.exports= {getAllarticles,getarticle,createArticle,updateArticle,deleteArticle,searcharticle};

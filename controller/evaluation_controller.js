@@ -1,4 +1,4 @@
-import evaluation from '../models/evaluation_model.js'
+const evaluation = require( '../models/evaluation_model')
 
 const getAllevaluation=(req,res)=>{
     evaluation.findAll().then(evaluation=>{
@@ -51,4 +51,4 @@ const deleteevaluation=(req,res)=>{
 };
 
 
-export {getAllevaluation,getevaluation,createevaluation,updateevaluation,deleteevaluation,searchevaluation};
+module.exports= {getAllevaluation,getevaluation,createevaluation,updateevaluation,deleteevaluation,searchevaluation};

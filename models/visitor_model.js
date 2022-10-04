@@ -1,12 +1,16 @@
 const { DataTypes } = require("sequelize");
 const db_config = require('../db/db_config')
 
-const Categorie= db_config.define('Categorie',{
-    label:{
+const visitor= db_config.define('visitor',{
+    name:{
           type:DataTypes.STRING,
+          allowNull:false
+           },
+    email:{
+          type:DataTypes.TEXT,
           allowNull:false
            },
 })
 
 
-module.exports= Categorie
+module.exports= visitor

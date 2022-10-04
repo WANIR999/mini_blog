@@ -1,4 +1,4 @@
-import Comment from '../models/Comment_model.js'
+const Comment= require('../models/Comment_model')
 
 const getAllComment=(req,res)=>{
     Comment.findAll().then(Comment=>{
@@ -51,4 +51,4 @@ const deleteComment=(req,res)=>{
 };
 
 
-export {getAllComment,getComment,createComment,updateComment,deleteComment,searchComment};
+module.exports= {getAllComment,getComment,createComment,updateComment,deleteComment,searchComment};
