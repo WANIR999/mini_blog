@@ -2,7 +2,7 @@ const Admin = require('../models/admin_model')
 
 const getAll=(req,res)=>{
    Admin.findAll().then(admins=>{
-     res.json({admins});
+    res.render('dashboard',{name:admins.name,role:admins.role})
    }
    ).catch(error=>res.json(error))
 };
@@ -16,8 +16,8 @@ const getOne=(req,res)=>{
 const createOne=(req,res)=>{
     const {body}=req;
     Admin.create({...body}).then(()=>{
-     res.json({message: "added sccssfly"})
-    }).catch(error=>res.json(error))
+     res.redirect("/admin/dashboard",{data:body})
+    }).catch(error=>res.error)
 };
 const updateOne=(req,res)=>{
     const {id}=req.params;

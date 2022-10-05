@@ -1,6 +1,8 @@
 const {Router} = require('express')
-const admin = require('../controller/admin_controller')
+const admin = require('../controller/admin_controller');
+const { databaseVersion } = require('../db/db_config');
 const router=Router();
+
 
 router.get('/getAlladmins',admin.getAll);
 router.get('/getOneadmin/:id',admin.getOne);
