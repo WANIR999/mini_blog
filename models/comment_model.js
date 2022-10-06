@@ -3,7 +3,7 @@ const db_config = require('../db/db_config')
 
 const Comment= db_config.define('Comment',{
     creator:{
-          type:DataTypes.INTEGER,
+          type:DataTypes.STRING,
           allowNull:false
            },
     article:{

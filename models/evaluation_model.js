@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db_config = require('../db/db_config')
 
-const evaluation= db_config.define('evaluation',{
+const Evaluation= db_config.define('evaluation',{
     creator:{
           type:DataTypes.INTEGER,
           allowNull:false
@@ -17,4 +17,4 @@ const evaluation= db_config.define('evaluation',{
 })
 
 
-module.exports= evaluation
+module.exports= Evaluation

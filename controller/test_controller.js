@@ -13,14 +13,14 @@ const searcharticle=(req,res)=>{
           content: body.content
         }
       }).then(Articles=>{
-     res.json(Articles);
+     res.render('dashboard',{data: Articles});
    }
    ).catch(error=>res.json(error))
 };
 const getarticle=(req,res)=>{
-    const {id}= req.params;
+    const {id}= req.body;
     Article.findByPk(id).then(Articles=>{
-        res.render('dashboard',{name:Articles.content});
+        res.render('update',{data:Articles});
       }
       ).catch(error=>res.json(error))
 };
@@ -31,22 +31,21 @@ const createArticle=(req,res)=>{
     }).catch(error=>res.json(error))
 };
 const updateArticle=(req,res)=>{
-    const {id}=req.params;
     const {body}=req;
-    Article.findByPk(id).then(Article =>{
+    Article.findByPk(body.id).then(Article =>{
     if(!Article) return res.json({msg:"not found"})
     Article.creator=body.creator
     Article.categorie=body.categorie
     Article.content=body.content
     Article.save().then(()=>{
-        res.json({msg: "updated"})
+        res.redirect('/test')
     }).catch(error=>res.json(error))
    })
 };
 const deleteArticle=(req,res)=>{
-    const {id}=req.params
+    const {id}=req.body
     Article.destroy({where:{id:id}}).then(()=>{
-        res.json({message:"deleted"})
+        res.redirect('/test')
     }).catch(error=>res.json({msg:error}))
 };
 
