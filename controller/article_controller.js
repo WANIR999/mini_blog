@@ -26,14 +26,14 @@ const searcharticle=(req,res)=>{
 const getarticle=(req,res)=>{
     const {id}= req.body;
     Article.findByPk(id).then(Articles=>{
-        res.render('articles/update_articles',{data:Articles});
+        res.render('articles/update_article',{data:Articles});
       }
       ).catch(error=>res.json(error))
 };
 const createArticle=(req,res)=>{
     const {body}=req;
     Article.create({...body}).then(()=>{
-     res.redirect('articles/article')
+     res.redirect('/article')
     }).catch(error=>res.json(error))
 };
 const updateArticle=(req,res)=>{
@@ -44,14 +44,14 @@ const updateArticle=(req,res)=>{
     Article.categorie=body.categorie
     Article.content=body.content
     Article.save().then(()=>{
-        res.redirect('articles/article')
+        res.redirect('/article')
     }).catch(error=>res.json(error))
    })
 };
 const deleteArticle=(req,res)=>{
     const {id}=req.body
     Article.destroy({where:{id:id}}).then(()=>{
-        res.redirect('articles/article')
+        res.redirect('/article')
     }).catch(error=>res.json({msg:error}))
 };
 

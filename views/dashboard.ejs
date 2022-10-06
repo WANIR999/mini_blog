@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>bloger</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid d-flex justify-content-between">
-          <a class="navbar-brand" href="#">Bloger</a>
-          <div class="w-50 d-flex justify-content-sm-around">
-            <a class="text-white" href="/article">articles</a>
-            <a class="text-white" href="/categorie">categories</a>
-            <a class="text-white" href="/comment">comments</a>
-            <a class="text-white" href="/evaluation">evaluations</a>
-          </div>
-        </div>
-      </nav>
-      <!-- qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq -->
 
+      <%- include ('includes/header') %>
       <div class="container-fluid text-center d-flex justify-content-between">
         <div class="container mt-5" style="width:200px; height:70vh; border: solid 2px grey;  border-radius: 10px;">
           
@@ -37,26 +18,26 @@
         <div class="row">
           <div class=" col">
             <div class="card card-block text-xs-center" >
-              <h4 class="card-title"><a href="" class="btn btn-secondary btn-block">Articles</a></h4>
-              <h3><% if(data.article){%><%=data.article%><%}else{%>0<%}%></h3>
+              <h4 class="card-title"><a href="/article" class="btn btn-secondary btn-block">Articles</a></h4>
+              <h3><%=data.article%></h3>
             </div>
           </div>
           <div class=" col">
             <div class="card card-block text-xs-center" >
-              <h4 class="card-title"><a href="" class="btn btn-secondary btn-block">Categories</a></h4>
-              <h3><% if(data.categorie){%><%=data.categorie%><%}else{%>0<%}%></h3>
+              <h4 class="card-title"><a href="/categorie" class="btn btn-secondary btn-block">Categories</a></h4>
+              <h3><%=data.categorie%></h3>
             </div>
           </div>
           <div class=" col">
             <div class="card card-block text-xs-center" >
-              <h4 class="card-title"><a href="" class="btn btn-secondary btn-block">Commentaires</a></h4>
-              <h3><% if(data.comment){%><%=data.comment%><%}else{%>0<%}%></h3>
+              <h4 class="card-title"><a href="/comment" class="btn btn-secondary btn-block">Commentaires</a></h4>
+              <h3><%=data.Comment%></h3>
             </div>
           </div>
           <div class=" col">
             <div class="card card-block text-xs-center" >
-              <h4 class="card-title"><a href="" class="btn btn-secondary btn-block">evaluation</a></h4>
-              <h3><% if(data.evaluation){%><%=data.evaluation%><%}else{%>0<%}%></h3>
+              <h4 class="card-title"><a href="/evaluation" class="btn btn-secondary btn-block">evaluation</a></h4>
+              <h3><%=data.Evaluation%></h3>
             </div>
           </div>
         </div>
