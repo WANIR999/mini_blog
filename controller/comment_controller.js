@@ -2,51 +2,50 @@ const Comment= require('../models/Comment_model')
 
 const getAllComment=(req,res)=>{
     Comment.findAll().then(Comment=>{
-     res.json(Comment);
+     res.render('comment/comments',{data:Comment});
    }
    ).catch(error=>res.json(error))
-};
-const getComment=(req,res)=>{
-    const {id}= req.params;
-    Comment.findByPk(id).then(Comment=>{
-        res.json(Comment);
-      }
-      ).catch(error=>res.json(error))
 };
 const searchComment=(req,res)=>{
     const {body} =req
     Comment.findAll({
         where: {
-          content: body.content
+          creator: body.creator
         }
       }).then(Comment=>{
-     res.json(Comment);
+     res.render('comment/comments',{data: Comment});
    }
    ).catch(error=>res.json(error))
+};
+const getComment=(req,res)=>{
+    const {id}= req.body;
+    Comment.findByPk(id).then(Comment=>{
+        res.render('comment/update_comment',{data:Comment});
+      }
+      ).catch(error=>res.json(error))
 };
 const createComment=(req,res)=>{
     const {body}=req;
     Comment.create({...body}).then(()=>{
-     res.json({message: "added sccssfly"})
+     res.redirect('/comment')
     }).catch(error=>res.json(error))
 };
 const updateComment=(req,res)=>{
-    const {id}=req.params;
     const {body}=req;
-    Comment.findByPk(id).then(Comment =>{
+    Comment.findByPk(body.id).then(Comment =>{
     if(!Comment) return res.json({msg:"not found"})
     Comment.creator=body.creator
-    Comment.article=body.article
     Comment.content=body.content
+    Comment.article=body.article
     Comment.save().then(()=>{
-        res.json({msg: "updated"})
+        res.redirect('/comment')
     }).catch(error=>res.json(error))
    })
 };
 const deleteComment=(req,res)=>{
-    const {id}=req.params
+    const {id}=req.body
     Comment.destroy({where:{id:id}}).then(()=>{
-        res.json({message:"deleted"})
+        res.redirect('/comment')
     }).catch(error=>res.json({msg:error}))
 };
 

@@ -2,10 +2,14 @@ const {Router} = require('express')
 const comment = require('../controller/comment_controller')
 const router=Router();
 
-router.get('/getAllcomment',comment.getAllComment);
-router.get('/getcomment/:id',comment.getComment);
-router.post('/createcomment',comment.createComment);
-router.put('/updatecomment/:id',comment.updateComment);
-router.delete('/deletecomment/:id',comment.deleteComment);
+router.get('/',comment.getAllComment);
+router.post('/getComment',comment.getComment);
+router.post('/searchComment',comment.searchComment);
+router.post('/createComment',comment.createComment);
+router.get('/createComment',(req,res)=>{
+        res.render('Comment/add_Comment')
+    });
+router.post('/updateComment',comment.updateComment);
+router.post('/deleteComment',comment.deleteComment);
 
 module.exports= router;

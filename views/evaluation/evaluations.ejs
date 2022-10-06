@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bloger</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bloger</a>
+        </div>
+      </nav>
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="col-12 mx-auto">
+                <div class="card">
+                    <div class="card-body bg-light">
+                        <a href="/home/admin" class="btn btn-sm btn-secondary mr-2 mb-2">
+                            <i class="fas fa-home"></i>
+                        </a>
+                        <form action="/evaluation/searchevaluation" method="post" class="float-right mb-2 d-flex flex-row">
+                            <input type="text" class="form-control" name="creator" placeholder="Recherche">
+                            <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fas fa-search"></i></button>
+                        </form>
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">creator</th>
+                              <th scope="col">article</th>
+                              <th scope="col">type</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% data.forEach(function(e) { %>
+                                <tr>
+                                  <th scope="row"><%=e.creator%></th>
+                                  <th scope="row"><%=e.article%></th>
+                                  <th scope="row"><%=e.type%></th>
+                                  <td class="d-flex flex-row">
+                                      <form method="post" class="mr-1" action="/evaluation/getevaluation">
+                                          <input type="hidden" name="id" value= "<%=e.id%>" >
+                                          <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                                      </form>
+                                      <form method="post" class="mr-1" action="/evaluation/deleteevaluation">
+                                          <input type="hidden" name="id" value= "<%=e.id%>">
+                                          <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                      </form>
+                                  </td>
+                                </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

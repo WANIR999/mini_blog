@@ -5,7 +5,7 @@ const categorie = require('./routes/categorie_routes');
 const comment = require('./routes/comment_routes');
 const evaluation = require('./routes/evaluation_routes');
 const visitor = require('./routes/visitors_routes');
-const testing = require('./routes/test_routes');
+const global = require('./routes/global_routes');
 const Db = require('./db/db_config');
 const app=express();
 
@@ -18,7 +18,7 @@ app.use('/categorie',categorie);
 app.use('/comment',comment);
 app.use('/evaluation',evaluation);
 app.use('/visitor',visitor);
-app.use('/test',testing);
+app.use('/home',global);
 
 
 Db.sync().then(()=>{

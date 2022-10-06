@@ -1,52 +1,50 @@
 const Categorie = require ('../models/categorie_model')
 
-const getAllCategories=(req,res)=>{
-    Categorie.findAll().then(Categories=>{
-     res.json(Categories);
+const getAllCategorie=(req,res)=>{
+    Categorie.findAll().then(Categorie=>{
+     res.render('categorie/categories',{data:Categorie});
    }
    ).catch(error=>res.json(error))
-};
-const getCategorie=(req,res)=>{
-    const {id}= req.params;
-    Categorie.findByPk(id).then(Categories=>{
-        res.json(Categories);
-      }
-      ).catch(error=>res.json(error))
 };
 const searchCategorie=(req,res)=>{
     const {body} =req
     Categorie.findAll({
         where: {
-          label: body.content
+          label: body.label
         }
       }).then(Categorie=>{
-     res.json(Categorie);
+     res.render('categorie/categories',{data: Categorie});
    }
    ).catch(error=>res.json(error))
+};
+const getCategorie=(req,res)=>{
+    const {id}= req.body;
+    Categorie.findByPk(id).then(Categorie=>{
+        res.render('categorie/update_categorie',{data:Categorie});
+      }
+      ).catch(error=>res.json(error))
 };
 const createCategorie=(req,res)=>{
     const {body}=req;
     Categorie.create({...body}).then(()=>{
-     res.json({message: "added sccssfly"})
+     res.redirect('/categorie')
     }).catch(error=>res.json(error))
 };
 const updateCategorie=(req,res)=>{
-    const {id}=req.params;
     const {body}=req;
-    Categorie.findByPk(id).then(Categorie =>{
+    Categorie.findByPk(body.id).then(Categorie =>{
     if(!Categorie) return res.json({msg:"not found"})
     Categorie.label=body.label
     Categorie.save().then(()=>{
-        res.json({msg: "updated"})
+        res.redirect('/categorie')
     }).catch(error=>res.json(error))
    })
 };
 const deleteCategorie=(req,res)=>{
-    const {id}=req.params
+    const {id}=req.body
     Categorie.destroy({where:{id:id}}).then(()=>{
-        res.json({message:"deleted"})
+        res.redirect('/categorie')
     }).catch(error=>res.json({msg:error}))
 };
 
-
-module.exports = {getAllCategories,getCategorie,createCategorie,updateCategorie,deleteCategorie,searchCategorie};
+module.exports = {getAllCategorie,getCategorie,createCategorie,updateCategorie,deleteCategorie,searchCategorie};

@@ -3,11 +3,14 @@ const {Router} = require('express')
 const evaluation = require('../controller/evaluation_controller')
 const router=Router();
 
-
-router.get('/getAllevaluation',evaluation.getAllevaluation);
-router.get('/getevaluation/:id',evaluation.getevaluation);
+router.get('/',evaluation.getAllevaluation);
+router.post('/getevaluation',evaluation.getevaluation);
+router.post('/searchevaluation',evaluation.searchevaluation);
 router.post('/createevaluation',evaluation.createevaluation);
-router.put('/updateevaluation/:id',evaluation.updateevaluation);
-router.delete('/deleteevaluation/:id',evaluation.deleteevaluation);
+router.get('/createevaluation',(req,res)=>{
+        res.render('evaluation/add_evaluation')
+    });
+router.post('/updateevaluation',evaluation.updateevaluation);
+router.post('/deleteevaluation',evaluation.deleteevaluation);
 
 module.exports= router;
