@@ -16,7 +16,7 @@ const searcharticle=(req,res)=>{
     const {body} =req
     Article.findAll({
         where: {
-          content: body.content
+            categorie: body.categorie
         }
       }).then(Articles=>{
      res.render('articles/articles',{data: Articles});

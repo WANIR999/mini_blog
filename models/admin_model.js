@@ -7,7 +7,7 @@ const Admin= db_config.define('admin',{
           allowNull:false
            },
     role:{
-          type:DataTypes.INTEGER,
+          type:DataTypes.STRING,
           allowNull:false
            }
 })
