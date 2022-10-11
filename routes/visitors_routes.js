@@ -4,9 +4,10 @@ const router=Router();
 
 
 router.get('/getAllvisitors',visitors.getAllvisitors);
-router.get('/getvisitors/:id',visitors.getvisitors);
 router.post('/createvisitors',visitors.createvisitors);
-router.put('/updatevisitors/:id',visitors.updatevisitors);
-router.delete('/deletevisitors/:id',visitors.deletevisitors);
+router.post('/visitorform',(req,res)=>{
+   const {id}=req.body
+    res.render('add_visitors',{id})
+});
 
 module.exports= router;

@@ -10,7 +10,7 @@ const searchComment=(req,res)=>{
     const {body} =req
     Comment.findAll({
         where: {
-          creator: body.creator
+          article: body.article
         }
       }).then(Comment=>{
      res.render('comment/comments',{data: Comment});

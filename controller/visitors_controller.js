@@ -1,4 +1,7 @@
 const visitors = require ('../models/visitor_model')
+const Comment = require ('../models/comment_model')
+
+const arr=[];
 
 const getAllvisitors=(req,res)=>{
     visitors.findAll().then(visitors=>{
@@ -25,10 +28,40 @@ const searchvisitors=(req,res)=>{
    ).catch(error=>res.json(error))
 };
 const createvisitors=(req,res)=>{
-    const {body}=req;
-    visitors.create({...body}).then(()=>{
-     res.json({message: "added sccssfly"})
-    }).catch(error=>res.json(error))
+    const visitor={
+        name:req.body.name,
+        email:req.body.email,
+    };
+    const comment={ 
+        creator:req.body.name,
+        content:req.body.content,
+        article:req.body.article,
+    }
+     if(arr.includes(visitor.email)==false){
+        arr.push(visitor.email)
+        visitors.create({...visitor}).then(()=>{
+         Comment.create({...comment}).then(()=>{
+          Comment.findAll({
+             where:{article:comment.article},
+             attributes:['content','creator']
+          }).then(data=>{
+             res.render('comment/viewcomments',{data})
+          })
+             
+         })
+     })
+     }else{
+         Comment.create({...comment}).then(()=>{
+          Comment.findAll({
+             where:{article:comment.article},
+             attributes:['content','creator']
+          }).then(data=>{
+             res.render('comment/viewcomments',{data})
+          })
+             
+         }).catch(error=>res.json(error))
+     }
+    
 };
 const updatevisitors=(req,res)=>{
     const {id}=req.params;

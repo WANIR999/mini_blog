@@ -3,7 +3,7 @@ const db_config = require('../db/db_config')
 
 const Article= db_config.define('Article',{
     creator:{
-          type:DataTypes.INTEGER,
+          type:DataTypes.STRING,
           allowNull:false
            },
     categorie:{
@@ -13,7 +13,7 @@ const Article= db_config.define('Article',{
     content:{
           type:DataTypes.TEXT,
           allowNull:false
-           }
+    }
 })
 
 

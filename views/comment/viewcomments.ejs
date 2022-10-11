@@ -1,0 +1,32 @@
+<%- include ('../includes/header2') %>
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="col-12 mx-auto">
+                <div class="card">
+                    <div class="card-body bg-light">
+                        <a href="/home/client_side" class="btn btn-sm btn-secondary mr-2 mb-2">
+                            <i class="fas fa-home"></i>
+                        </a>
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">creator</th>
+                              <th scope="col">content</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% data.forEach(function(e) { %>
+                                <tr>
+                                  <th scope="row"><%=e.creator%></th>
+                                  <th scope="row"><%=e.content%></th>
+                                 
+                                </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include ('../includes/footer') %>
